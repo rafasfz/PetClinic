@@ -23,3 +23,6 @@ class ClientRepositoryImpl(ClientRepository):
             address=address
         )
         return client
+
+    def delete(self, id):
+        Client.objects.filter(id=id).delete()

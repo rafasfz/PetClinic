@@ -1,0 +1,30 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+  <h2><a href="/clients/pets/add/">Adicionar Pet</a></h2>
+
+  <table>
+    <th>
+        <td>Nome</td>
+        <td>Raça</td>
+        <td>Nascimento</td>
+        <td>Dono</td>
+        <td>Editar</td>
+        <td>Excluir</td>
+    </th>
+    <tbody>
+        {% for pet in pets %}
+        <tr>
+            <td>{{ pet.name }}</td>
+            <td>{{ pet.breed }}</td>
+            <td>{{ pet.birth_date }}</td>
+            <td>{{ pet.owner }}</td>
+            <td><a href="/clients/pets/edit/{{ pet.id }}/">Editar</a></td>
+            <td><a href="/clients/pets/delete/{{ pet.id }}/">Excluir</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

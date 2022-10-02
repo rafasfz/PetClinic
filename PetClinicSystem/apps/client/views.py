@@ -6,9 +6,16 @@ from .services.client_service import ClientService
 from .repositories.client_repository_impl import ClientRepositoryImpl
 from .repositories.address_repository_impl import AddressRepositoryImpl
 
+from .services.pet_service import PetService
+from .repositories.pet_repository_impl import PetRepositoryImpl
+
 client_service = ClientService(
 	client_repository=ClientRepositoryImpl(),
 	address_repository=AddressRepositoryImpl()
+)
+
+pet_service = PetService(
+	pet_repository=PetRepositoryImpl()
 )
 
 class ClientAddView(View):
@@ -46,3 +53,34 @@ class ClientView(View):
 		client_service.create(request.POST)
 
 		return redirect('clients')
+
+class PetAddView(View):
+	def get(self, request):
+		pet_form = pet_service.pet_form()
+		return render(request, 'pet/form.html', {'pet_form': pet_form, 'action': '/clients/pets/'})
+
+class PetView(View):
+	def get(self, request):
+		pets = pet_service.get_all()
+		return render(request, 'pet/list.html', {'pets': pets})
+
+	def post(self, request):
+		pet_service.create(request.POST)
+
+		return redirect('pets')
+
+class PetEditView(View):
+	def get(self, request, id):
+		pet_form = pet_service.pet_form_edit(id)
+		return render(request, 'pet/form.html', {'pet_form': pet_form, 'action': f'/clients/pets/edit/{id}/'})
+
+	def post(self, request, id):
+		pet_service.update(request.POST, id)
+
+		return redirect('/clients/pets/')
+
+class PetDeleteView(View):
+	def get(self, request, id):
+		pet_service.delete(id)
+
+		return redirect('/clients/pets/')

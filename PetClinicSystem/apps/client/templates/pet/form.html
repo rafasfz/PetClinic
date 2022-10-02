@@ -1,0 +1,18 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+  <h2>Formulário animal de estimação</h2>
+
+  <p><a href="/clients/pets/">Voltar</a></p>
+
+  <form action="{{ action }}" method="POST">
+
+    {% csrf_token %}
+    {{ pet_form.as_p }}
+
+    <input type="submit" value="Salvar Pet" />
+
+  </form>
+
+{% endblock %}

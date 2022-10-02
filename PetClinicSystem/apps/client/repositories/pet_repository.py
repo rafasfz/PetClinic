@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
 
-class ClientRepository:
+class PetRepository:
     @abstractmethod
     def get_all(self):
         pass
@@ -11,11 +11,11 @@ class ClientRepository:
         pass
 
     @abstractmethod
-    def create(self, client, address):
+    def create(self, pet):
         pass
 
     @abstractmethod
-    def update(self, client, address):
+    def update(self, pet):
         pass
 
     @abstractmethod

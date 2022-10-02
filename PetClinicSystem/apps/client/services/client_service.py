@@ -57,6 +57,4 @@ class ClientService():
         return client
 
     def delete(self, id):
-        client = self.client_repository.get_by_id(id)
-        client.delete()
-        return client
+        self.client_repository.delete(id)
