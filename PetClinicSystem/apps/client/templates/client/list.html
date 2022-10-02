@@ -1,0 +1,30 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+  <h2><a href="/clients/add/">Adicionar Cliente</a></h2>
+
+  <table>
+    <th>
+        <td>Nome</td>
+        <td>E-mail</td>
+        <td>Telefone</td>
+        <td>Detalhes</td>
+        <td>Editar</td>
+        <td>Excluir</td>
+    </th>
+    <tbody>
+        {% for client in clients %}
+        <tr>
+            <td>{{ client.name }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.phone }}</td>
+            <td><a href="/clients/{{ client.id }}/">Detalhes</a></td>
+            <td><a href="/clients/edit/{{ client.id }}/">Editar</a></td>
+            <td><a href="/clients/delete/{{ client.id }}/">Excluir</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

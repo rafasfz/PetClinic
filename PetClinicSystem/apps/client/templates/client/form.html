@@ -1,0 +1,19 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+  <h2>Formulário cliente</h2>
+
+  <p><a href="/clients/">Voltar</a></p>
+
+  <form action="{{ action }}" method="POST">
+
+    {% csrf_token %}
+    {{ client_form.as_p }}
+    {{ address_form.as_p }}
+
+    <input type="submit" value="Salvar Cliente" />
+
+  </form>
+
+{% endblock %}
