@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'client',
     'clinic',
+    'dashboard',
 ]
 
 MIDDLEWARE = [

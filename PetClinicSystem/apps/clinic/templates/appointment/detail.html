@@ -1,19 +1,27 @@
-<h2>Detalhes veterinário</h2>
+{% extends "base_layout.html" %}
 
-<p><a href="/clinic/appointments/">Voltar</a></p>
+{% block content %}
 
-<h3>Consulta:</h3>
-<p>Data: {{appointment.date}}</p>
-<p>Veterinário: {{appointment.veterinary}}</p>
-<p>Paciente: {{appointment.pet}}</p>
+    <h2>Detalhes veterinário</h2>
 
-<h4>Detalhes</h4>
-<p>Diagnostico: {{appointment.diagnosis}}</p>
-<p>{{appointment.description}}</p>
+    <p><a href="/clinic/appointments/">Voltar</a></p>
 
-<h4>Medicamentos</h4>
-<ul>
-    {%for drug in drugs %}
-        <li>{{drug.name}}</li>
-    {%endfor%}
-</ul>
+    <h3>Consulta:</h3>
+    <p>Data: {{appointment.date}}</p>
+    <p>Veterinário: {{appointment.veterinary}}</p>
+    <p>Paciente: {{appointment.pet}}</p>
+
+    <h4>Detalhes</h4>
+    <p>Diagnostico: {{appointment.diagnosis}}</p>
+    <p>{{appointment.description}}</p>
+
+    <h4>Medicamentos</h4>
+    <ul>
+        {%for drug in drugs %}
+            <li>{{drug.name}}</li>
+        {%endfor%}
+    </ul>
+
+{% endblock %}
+
+

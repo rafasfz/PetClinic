@@ -1,22 +1,31 @@
-<h2>Detalhes cliente</h2>
+{% extends "base_layout.html" %}
 
-<p><a href="/clients/">Voltar</a></p>
+{% block content %}
 
-<h3>Cliente: {{client}}</h3>
-<p>Nome: {{client.name}}</p>
-<p>E-mail: {{client.email}}</p>
-<p>Telefone: {{client.phone}}</p>
+    <h2>Detalhes cliente</h2>
 
-<h4>Pets: </h4>
-<ul>
-    {%for pet in pets %}
-        <li>{{pet}}</li>
-    {%endfor%}
-</ul>
+    <p><a href="/clients/">Voltar</a></p>
 
-<h4>Endereço: </h4>
-<p>Rua: {{client.address.street}}</p>
-<p>Bairro: {{client.address.strict}}</p>
-<p>CEP: {{client.address.zip}}</p>
-<p>Cidade: {{client.address.city}}</p>
-<p>Estado: {{client.address.state}}</p>
+    <h3>Cliente: {{client}}</h3>
+    <p>Nome: {{client.name}}</p>
+    <p>E-mail: {{client.email}}</p>
+    <p>Telefone: {{client.phone}}</p>
+
+    <h4>Pets: </h4>
+    <ul>
+        {%for pet in pets %}
+            <li>{{pet}}</li>
+        {%endfor%}
+    </ul>
+
+    <h4>Endereço: </h4>
+    <p>Rua: {{client.address.street}}</p>
+    <p>Bairro: {{client.address.strict}}</p>
+    <p>CEP: {{client.address.zip}}</p>
+    <p>Cidade: {{client.address.city}}</p>
+    <p>Estado: {{client.address.state}}</p>
+
+
+{% endblock %}
+
+
