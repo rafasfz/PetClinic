@@ -20,10 +20,10 @@ class Drug(models.Model):
 class Appointment(models.Model):
     date = models.DateField(verbose_name='Data')
     description = models.TextField(verbose_name='Descrição')
-    diagnosis = models.TimeField(verbose_name='Diagnóstico')
+    diagnosis = models.TextField(verbose_name='Diagnóstico')
     drugs = models.ManyToManyField(Drug, verbose_name='Remédios')
-    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, verbose_name='Pet')
-    veterinary = models.ForeignKey(Veterinary, on_delete=models.CASCADE, verbose_name='Veterinário')
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, verbose_name='Paciente')
+    veterinary = models.ForeignKey(Veterinary, on_delete=models.CASCADE, related_name='appointments', verbose_name='Veterinário')
 
     def __str__(self):
         return self.description

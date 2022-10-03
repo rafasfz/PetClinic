@@ -1,0 +1,18 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+  <h2>Formulário consulta</h2>
+
+  <p><a href="/clinic/appointments/">Voltar</a></p>
+
+  <form action="{{ action }}" method="POST">
+
+    {% csrf_token %}
+    {{ appointment_form.as_p }}
+
+    <input type="submit" value="Salvar consulta" />
+
+  </form>
+
+{% endblock %}

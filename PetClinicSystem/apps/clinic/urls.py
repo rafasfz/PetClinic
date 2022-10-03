@@ -9,6 +9,10 @@ from .views import (
     VeterinaryEditView,
     VeterinaryDeleteView,
     VeterinaryDetailView,
+    AppointmentView,
+    AppointmentDetailView,
+    AppointmentAddView,
+    AppointmentEditView,
 )
 
 urlpatterns = [
@@ -21,4 +25,9 @@ urlpatterns = [
     path('veterinaries/add/', VeterinaryAddView.as_view(), name='veterinaries_add'),
     path('veterinaries/edit/<int:id>/', VeterinaryEditView.as_view(), name='veterinaries_edit'),
     path('veterinaries/delete/<int:id>/', VeterinaryDeleteView.as_view(), name='veterinaries_delete'),
+
+    path('appointments/', AppointmentView.as_view(), name='appointments'),
+    path('appointments/<int:id>/', AppointmentDetailView.as_view(), name='appointments_detail'),
+    path('appointments/add/', AppointmentAddView.as_view(), name='appointments_add'),
+    path('appointments/edit/<int:id>/', AppointmentEditView.as_view(), name='appointments_edit'),
 ]

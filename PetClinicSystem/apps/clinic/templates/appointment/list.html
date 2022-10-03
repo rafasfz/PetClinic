@@ -1,0 +1,34 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+  <h2><a href="/clinic/appointments/add/">Adicionar Consulta</a></h2>
+
+  <form action="/clinic/appointments" method="GET">
+    <input type="text" name="search" value="{{search}}">
+
+    <input type="submit" value="Buscar">
+  </form>
+
+  <table>
+    <thead>
+        <td>Data</td>
+        <td>Veterinário</td>
+        <td>Paciente</td>
+        <td>Detalhes</td>
+        <td>Editar</td>
+    </thead>
+    <tbody>
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.veterinary.name }}</td>
+            <td>{{ appointment.pet.name }}</td>
+            <td><a href="/clinic/appointments/{{ appointment.id }}/">Detalhes</a></td>
+            <td><a href="/clinic/appointments/edit/{{ appointment.id }}/">Editar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

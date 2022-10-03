@@ -1,0 +1,15 @@
+<h2>Detalhes veterinário</h2>
+
+<p><a href="/clinic/veterinaries/">Voltar</a></p>
+
+<h3>Veterinário: {{veterinary}}</h3>
+<p>Nome: {{veterinary.name}}</p>
+<p>E-mail: {{veterinary.email}}</p>
+<p>Telefone: {{veterinary.phone}}</p>
+
+<h4>Consultas</h4>
+<ul>
+    {%for appointment in appointments %}
+        <li>{{appointment.pet}} - {{appointment.date}}</li>
+    {%endfor%}
+</ul>
