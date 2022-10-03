@@ -1,0 +1,18 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+  <h2>Formulário medicamento</h2>
+
+  <p><a href="/clinic/drugs/">Voltar</a></p>
+
+  <form action="{{ action }}" method="POST">
+
+    {% csrf_token %}
+    {{ drug_form.as_p }}
+
+    <input type="submit" value="Salvar medicamento" />
+
+  </form>
+
+{% endblock %}

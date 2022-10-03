@@ -1,0 +1,22 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+  <h2><a href="/clinic/drugs/add/">Adicionar Medicamento</a></h2>
+
+  <table>
+    <thead>
+        <td>Nome</td>
+        <td>Excluir</td>
+    </thead>
+    <tbody>
+        {% for drug in drugs %}
+        <tr>
+            <td>{{ drug.name }}</td>
+            <td><a href="/clinic/drugs/delete/{{ drug.id }}/">Excluir</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

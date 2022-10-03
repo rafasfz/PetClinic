@@ -1,0 +1,18 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+  <h2>Formulário veterinário</h2>
+
+  <p><a href="/clinic/veterinaries/">Voltar</a></p>
+
+  <form action="{{ action }}" method="POST">
+
+    {% csrf_token %}
+    {{ veterinary_form.as_p }}
+
+    <input type="submit" value="Salvar veterinário" />
+
+  </form>
+
+{% endblock %}

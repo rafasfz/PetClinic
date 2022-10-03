@@ -1,0 +1,30 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+  <h2><a href="/clinic/veterinaries/add/">Adicionar Veterinário</a></h2>
+
+  <table>
+    <thead>
+        <td>Nome</td>
+        <td>E-mail</td>
+        <td>Telefone</td>
+        <td>Detalhes</td>
+        <td>Editar</td>
+        <td>Excluir</td>
+    </thead>
+    <tbody>
+        {% for veterinary in veterinaries %}
+        <tr>
+            <td>{{ veterinary.name }}</td>
+            <td>{{ veterinary.email }}</td>
+            <td>{{ veterinary.phone }}</td>
+            <td><a href="/clinic/veterinaries/{{ veterinary.id }}/">Detalhes</a></td>
+            <td><a href="/clinic/veterinaries/edit/{{ veterinary.id }}/">Editar</a></td>
+            <td><a href="/clinic/veterinaries/delete/{{ veterinary.id }}/">Excluir</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

@@ -7,6 +7,13 @@
 <p>E-mail: {{client.email}}</p>
 <p>Telefone: {{client.phone}}</p>
 
+<h4>Pets: </h4>
+<ul>
+    {%for pet in pets %}
+        <li>{{pet}}</li>
+    {%endfor%}
+</ul>
+
 <h4>Endereço: </h4>
 <p>Rua: {{client.address.street}}</p>
 <p>Bairro: {{client.address.strict}}</p>

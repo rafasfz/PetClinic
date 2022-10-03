@@ -42,7 +42,8 @@ class ClientDeleteView(View):
 class ClientDetailView(View):
 	def get(self, request, id):
 		client = client_service.get_by_id(id)
-		return render(request, 'client/detail.html', {'client': client})
+		pets = client.pets.all()
+		return render(request, 'client/detail.html', {'client': client, 'pets': pets})
 
 class ClientView(View):
 	def get(self, request):
