@@ -1,18 +1,19 @@
 {% extends "base_layout.html" %}
 
 {% block content %}
-
-  <h2>Formulário animal de estimação</h2>
-
-  <p><a href="/clients/pets/">Voltar</a></p>
+<div class="p-4">
+  <div class="d-flex align-items-center justify-content-start my-3">
+    <a class="btn btn-outline-secondary " href="/clients/pets/"><i class="fa-solid fa-chevron-left"></i></a>
+  </div>
+  <h3 class="mt-3 mb-3">Adicionar Animal de Estimação</h3>
 
   <form action="{{ action }}" method="POST">
 
     {% csrf_token %}
     {{ pet_form.as_p }}
 
-    <input type="submit" value="Salvar Pet" />
+    <input class="btn btn-primary" type="submit" value="Salvar Pet" />
 
   </form>
-
+</div>
 {% endblock %}

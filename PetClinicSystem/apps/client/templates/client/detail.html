@@ -1,31 +1,47 @@
 {% extends "base_layout.html" %}
-
+{% load static %}
 {% block content %}
-
-    <h2>Detalhes cliente</h2>
-
-    <p><a href="/clients/">Voltar</a></p>
-
-    <h3>Cliente: {{client}}</h3>
-    <p>Nome: {{client.name}}</p>
-    <p>E-mail: {{client.email}}</p>
-    <p>Telefone: {{client.phone}}</p>
-
-    <h4>Pets: </h4>
-    <ul>
-        {%for pet in pets %}
-            <li>{{pet}}</li>
-        {%endfor%}
-    </ul>
-
-    <h4>Endereço: </h4>
-    <p>Rua: {{client.address.street}}</p>
-    <p>Bairro: {{client.address.strict}}</p>
-    <p>CEP: {{client.address.zip}}</p>
-    <p>Cidade: {{client.address.city}}</p>
-    <p>Estado: {{client.address.state}}</p>
-
+<div class="p-4 ">
+    <div class="d-flex align-items-center justify-content-start my-3">
+        <a class="btn btn-outline-secondary " href="/clients/"><i
+                class="fa-solid fa-chevron-left"></i></a>
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="card w-50">
+            <div class="d-flex justify-content-center align-items-center p-4">
+                <img src="{%static 'assets/dono.svg'%}" class="card-img-top
+                    w-50" alt="Imagem Ilustrativa do Cliente">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" title="Cliente" style="font-size:2rem;">{{client}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted"> {{client.name}}</h6>
+                <div class="card-text">
+                    <p class="card-text"><b>E-mail:</b>{{client.email}}</p>
+                    <p class="card-text"><b>Telefone: </b>{{client.phone}}</p>
+                    <p><b>Rua:</b> {{client.address.street}}</p>
+                    <p><b>Bairro:</b> {{client.address.strict}}</p>
+                    <p><b>CEP:</b> {{client.address.zip}}</p>
+                    <p><b>Cidade:</b> {{client.address.city}}</p>
+                    <p><b>Estado:</b> {{client.address.state}}</p>
+                </div>
+                <div class="card-text">
+                    {% if clients %}
+                    <p class="card-text"><b>Pets:</b></p>
+                    <ul>
+                        {%for pet in pets %}
+                        <li>{{pet}}</li>
+                        {%endfor%}
+                    </ul>
+                    {% else %}
+                    <div class="d-flex">
+                        <p class="card-text"><b>Pets:</b></p>
+                        <p>Nenhum pet cadastrado para esse cliente.</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
-
-

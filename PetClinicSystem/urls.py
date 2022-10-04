@@ -8,3 +8,4 @@ urlpatterns = [
     path('clients/', include('client.urls')),
     path('clinic/', include('clinic.urls')),
 ]
+

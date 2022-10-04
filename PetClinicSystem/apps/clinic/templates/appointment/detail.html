@@ -1,26 +1,45 @@
 {% extends "base_layout.html" %}
-
+{% load static %}
 {% block content %}
 
-    <h2>Detalhes veterinário</h2>
-
-    <p><a href="/clinic/appointments/">Voltar</a></p>
-
-    <h3>Consulta:</h3>
-    <p>Data: {{appointment.date}}</p>
-    <p>Veterinário: {{appointment.veterinary}}</p>
-    <p>Paciente: {{appointment.pet}}</p>
-
-    <h4>Detalhes</h4>
-    <p>Diagnostico: {{appointment.diagnosis}}</p>
-    <p>{{appointment.description}}</p>
-
-    <h4>Medicamentos</h4>
-    <ul>
-        {%for drug in drugs %}
-            <li>{{drug.name}}</li>
-        {%endfor%}
-    </ul>
+<div class="p-4 ">
+    <div class="d-flex align-items-center justify-content-start my-3">
+        <a class="btn btn-outline-secondary " href="/clinic/appointments/"><i
+                class="fa-solid fa-chevron-left"></i></a>
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="card w-50">
+            <div class="d-flex justify-content-center align-items-center p-4">
+                <img src="{%static 'assets/vet.svg'%}" class="card-img-top
+                    w-50" alt="Imagem Ilustrativa da Consulta">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" title="Data" style="font-size:2rem;">{{appointment.date}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted"> <b>Veterinário: </b>{{appointment.veterinary}}</h6>
+                <div class="card-text">
+                    <p class="card-text"><b>Paciente:</b>{{appointment.pet}}</p>
+                    <p class="card-text"><b>Diagnóstico: </b>{{appointment.diagnosis}}</p>
+                    <p class="card-text">{{appointment.description}}</p>
+                </div>
+                <div class="card-text">
+                    {% if drugs %}
+                    <p class="card-text"><b>Medicamentos:</b></p>
+                    <ul>
+                        {%for drug in drugs %}
+                        <li>{{drug.name}}</li>
+                    {%endfor%}
+                    </ul>
+                    {% else %}
+                    <div class="d-flex">
+                        <p class="card-text"><b>Medicamentos:</b></p>
+                        <p>Nenhum médicamento foi prescrito para este paciente.</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 

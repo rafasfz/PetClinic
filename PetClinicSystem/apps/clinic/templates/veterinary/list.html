@@ -5,27 +5,35 @@
   <div class="d-flex justify-content-end align-items-center">
     <a class="btn btn-primary"   href="/clinic/veterinaries/add/"><i class="fa-solid fa-plus mr-1"></i> Adicionar Veterinário</a>
   </div>
-  <table>
-    <thead>
-        <td>Nome</td>
-        <td>E-mail</td>
-        <td>Telefone</td>
-        <td>Detalhes</td>
-        <td>Editar</td>
-        <td>Excluir</td>
+  <h3 class="mt-3 mb-3">Veterinários</h3>
+  <table class="table table-responsive">
+    <thead class="table-dark">
+        <td class="fw-bold" scope="col" >#</td>
+        <td class="fw-bold w-25" scope="col">Nome</td>
+        <td class="fw-bold w-25" scope="col">E-mail</td>
+        <td class="fw-bold w-25" scope="col">Telefone</td>
+        <td class="fw-bold w-25" scope="col">Detalhes</td>
+        <td class="fw-bold" scope="col">Ações</td>
     </thead>
+    {% if veterinaries %}
     <tbody>
         {% for veterinary in veterinaries %}
         <tr>
+          <td class="fw-bold" scope="row" >{{ forloop.counter }}</td>
             <td>{{ veterinary.name }}</td>
             <td>{{ veterinary.email }}</td>
             <td>{{ veterinary.phone }}</td>
-            <td><a href="/clinic/veterinaries/{{ veterinary.id }}/">Detalhes</a></td>
-            <td><a href="/clinic/veterinaries/edit/{{ veterinary.id }}/">Editar</a></td>
-            <td><a href="/clinic/veterinaries/delete/{{ veterinary.id }}/">Excluir</a></td>
+            <td class="d-flex justify-content-around align-items-center"><a class="btn btn-outline-info" href="/clinic/veterinaries/{{ veterinary.id }}/" title="Detalhes"><i class="fa-solid fa-eye"></i></a><a class="btn btn-outline-dark" href="/clinic/veterinaries/edit/{{ veterinary.id }}/" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a><a class="btn btn-outline-danger" href="/clinic/veterinaries/delete/{{ veterinary.id }}/" title="Excluir"><i class="fa-solid fa-trash"></i></a></td>
         </tr>
         {% endfor %}
     </tbody>
+    {% else %}
+    <tbody>
+      <tr>
+        <td class="text-center p-3" colspan="6">Não há veterinários cadastrados</td>
+      </tr>
+    </tbody>
+    {% endif %}
   </table>
 </div>
 {% endblock %}
