@@ -1,34 +1,50 @@
 {% extends "base_layout.html" %}
 
 {% block content %}
+<div class="p-4">
+  <div class="d-flex justify-content-end align-items-center">
+    <a class="btn btn-primary" href="/clinic/appointments/add/"><i class="fa-solid fa-plus mr-1"></i> Adicionar Consulta</a>
+  </div>
+  <h3 class="mt-3 mb-3">Consultas</h3>
+  <div class="container mt-4 mb-3 d-flex justify-content-end">
+    <form class="row" action="/clinic/appointments" method="GET">
+      <div class="col-10">
+        <input class="form-control" type="text" name="search" value="{{search}}">
+      </div>
+      <div class="col-2">
+        <input class="btn btn-secondary" type="submit" value="Buscar">
+      </div>
+    </form>
+  </div>
 
-  <h2><a href="/clinic/appointments/add/">Adicionar Consulta</a></h2>
-
-  <form action="/clinic/appointments" method="GET">
-    <input type="text" name="search" value="{{search}}">
-
-    <input type="submit" value="Buscar">
-  </form>
-
-  <table>
-    <thead>
-        <td>Data</td>
-        <td>Veterinário</td>
-        <td>Paciente</td>
-        <td>Detalhes</td>
-        <td>Editar</td>
+  <table class="table table-responsive">
+    <thead class="table-dark">
+        <td class="fw-bold" scope="col" >#</td>
+        <td class="fw-bold" scope="col">Data</td>
+        <td class="fw-bold" scope="col">Veterinário</td>
+        <td class="fw-bold" scope="col">Paciente</td>
+        <td class="fw-bold" scope="col">Ações</td>
     </thead>
+    {% if appointments %}
     <tbody>
         {% for appointment in appointments %}
         <tr>
+            <td class="fw-bold">{{ forloop.counter }}</td>
             <td>{{ appointment.date }}</td>
             <td>{{ appointment.veterinary.name }}</td>
             <td>{{ appointment.pet.name }}</td>
-            <td><a href="/clinic/appointments/{{ appointment.id }}/">Detalhes</a></td>
-            <td><a href="/clinic/appointments/edit/{{ appointment.id }}/">Editar</a></td>
+            <td class="d-flex justify-content-around align-items-center"><a class="btn btn-outline-info" title="Detalhes" href="/clinic/appointments/{{ appointment.id }}/"><i class="fa-solid fa-eye"></i></a></td>
+            <td><a class="btn btn-outline-dark" title="Editar" href="/clinic/appointments/edit/{{ appointment.id }}/">Editar</a></td>
         </tr>
         {% endfor %}
     </tbody>
+    {% else %}
+    <tbody>
+      <tr>
+        <td class="text-center p-3" colspan="5">Não há consultas cadastradas</td>
+      </tr>
+    </tbody>
+    {% endif %}
   </table>
-
+</div>
 {% endblock %}

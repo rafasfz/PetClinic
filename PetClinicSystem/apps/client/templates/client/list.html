@@ -1,30 +1,40 @@
 {% extends "base_layout.html" %}
 
 {% block content %}
-
-  <h2><a href="/clients/add/">Adicionar Cliente</a></h2>
-
-  <table>
-    <thead>
-        <td>Nome</td>
-        <td>E-mail</td>
-        <td>Telefone</td>
-        <td>Detalhes</td>
-        <td>Editar</td>
-        <td>Excluir</td>
+<div class="p-4">
+  <div class="d-flex justify-content-end align-items-center">
+    <a class="btn btn-primary"   href="/clients/add/"><i class="fa-solid fa-plus mr-1"></i> Adicionar Cliente</a>
+  </div>
+  <h3 class="mt-3 mb-3">Clientes Cadastrados</h3>
+  <table class="table table-responsive">
+    <thead class="table-dark">
+      <td class="fw-bold" scope="col" >#</td>
+      <td class="fw-bold w-25" scope="col" >Nome</td>
+      <td class="fw-bold w-25" scope="col" >E-mail</td>
+      <td class="fw-bold w-25" scope="col" >Telefone</td>
+      <td class="fw-bold" scope="col" >Ações</td>
     </thead>
+    {% if clients %}
     <tbody>
-        {% for client in clients %}
-        <tr>
-            <td>{{ client.name }}</td>
-            <td>{{ client.email }}</td>
-            <td>{{ client.phone }}</td>
-            <td><a href="/clients/{{ client.id }}/">Detalhes</a></td>
-            <td><a href="/clients/edit/{{ client.id }}/">Editar</a></td>
-            <td><a href="/clients/delete/{{ client.id }}/">Excluir</a></td>
-        </tr>
-        {% endfor %}
+      {% for client in clients %}
+      <tr>
+          <td class="fw-bold" scope="row" >{{ forloop.counter }}</td>
+          <td>{{ client.name }}</td>
+          <td>{{ client.email }}</td>
+          <td>{{ client.phone }}</td>
+          <td class="d-flex justify-content-around align-items-center"><a class="btn btn-outline-info" href="/clients/{{ client.id }}/" title="Detalhes"><i class="fa-solid fa-eye"></i></a><a class="btn btn-outline-dark" href="/clients/edit/{{ client.id }}/" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a><a class="btn btn-outline-danger" href="/clients/delete/{{ client.id }}/" title="Excluir"><i class="fa-solid fa-trash"></i></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>   
+    {% else %}
+    <tbody>
+      <tr>
+        <td class="text-center p-3" colspan="5">Não há clientes cadastrados</td>
+      </tr>
     </tbody>
+    {% endif %}
   </table>
+</div>
+
 
 {% endblock %}

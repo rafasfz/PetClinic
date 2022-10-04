@@ -1,9 +1,10 @@
 {% extends "base_layout.html" %}
 
 {% block content %}
-
-  <h2><a href="/clinic/veterinaries/add/">Adicionar Veterinário</a></h2>
-
+<div class="p-4">
+  <div class="d-flex justify-content-end align-items-center">
+    <a class="btn btn-primary"   href="/clinic/veterinaries/add/"><i class="fa-solid fa-plus mr-1"></i> Adicionar Veterinário</a>
+  </div>
   <table>
     <thead>
         <td>Nome</td>
@@ -26,5 +27,5 @@
         {% endfor %}
     </tbody>
   </table>
-
+</div>
 {% endblock %}
