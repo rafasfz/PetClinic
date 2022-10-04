@@ -1,41 +1,61 @@
 {% extends "base_layout.html" %} {% load static %} {% block content %}
 
 <div class="p-4">
-  <div class="container-fluid d-flex justify-content-center align-items-center">
-    <h1>Bem-vindos a PetClinic</h1>
-    <img src="{% static 'assets/play-with-pet.png' %}" />
-  </div>
-  <h3 class="mt-3 mb-3">Que serviços nós fornecemos?</h3>
-  <div class="container-fluid d-flex justify-content-evenly md-6 lg-6 sm-6">
-    <div class="card" style="width: 28rem">
-      <img
-        src="{% static 'assets/fever.png' %}"
-        class="card-img-top"
-        alt="cachorro doente"
-      />
-      <div class="card-body">
-        <h5 class="card-title">Atendimento com veterinário</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
+    <div class="container-fluid d-flex justify-content-center
+        align-items-center">
+        <h1>Bem-vindos a PetClinic</h1>
     </div>
-    <div class="card" style="width: 28rem">
-      <img
-        src="{% static 'assets/medicine.png' %}"
-        class="card-img-top"
-        alt="remédios"
-      />
-      <div class="card-body">
-        <h5 class="card-title">Venda de medicamentos</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
+    <div class="w-100 p-5" style="height: 100%;
+        display: grid;">
+        <h3 class="mt-3 mb-5 text-center">Que serviços nós fornecemos?</h3>
+        <div class="container-fluid row" style="margin: 0 auto;">
+            <div class="d-flex align-items-center
+                justify-content-center">
+                <div class="card col-4 col-sm-12 m-2" style="width: 28rem">
+                    <img
+                        src="{% static 'assets/vet.svg' %}"
+                        class="card-img-top p-4"
+                        alt="cachorro doente"
+                        />
+                    <div class="card-body">
+                        <h5 class="card-title">Atendimento com veterinário</h5>
+                        <p class="card-text">
+                            Atendemos 24 horas o seu pet.
+                        </p>
+                    </div>
+                </div>
+                <div class="card col-4 col-sm-12 m-2" style="width: 28rem">
+                    <img
+                        src="{% static 'assets/drugs.svg' %}"
+                        class="card-img-top p-5"
+                        alt="remédios"
+                        />
+                    <div class="card-body">
+                        <h5 class="card-title">Venda de medicamentos</h5>
+                        <p class="card-text">
+                            Aqui na PetClinic você entra diversos medicamentos
+                            no melhor preço do mercado.
+                        </p>
+                    </div>
+                </div>
+                <div class="card col-4 col-sm-12 m-2" style="width: 28rem">
+                    <img
+                        src="{% static 'assets/pet.svg' %}"
+                        class="card-img-top p-5"
+                        alt="remédios"
+                        />
+                    <div class="card-body">
+                        <h5 class="card-title">Tratamento Especial para o seu
+                            Pet</h5>
+                        <p class="card-text">
+                            Aqui na PetClinic seu pet é atendimento com todo
+                            carinho e atenção.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}
