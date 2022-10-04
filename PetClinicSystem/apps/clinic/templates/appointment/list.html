@@ -33,8 +33,8 @@
             <td>{{ appointment.date }}</td>
             <td>{{ appointment.veterinary.name }}</td>
             <td>{{ appointment.pet.name }}</td>
-            <td class="d-flex justify-content-around align-items-center"><a class="btn btn-outline-info" title="Detalhes" href="/clinic/appointments/{{ appointment.id }}/"><i class="fa-solid fa-eye"></i></a></td>
-            <td><a class="btn btn-outline-dark" title="Editar" href="/clinic/appointments/edit/{{ appointment.id }}/">Editar</a></td>
+            <td class="d-flex justify-content-around align-items-center"><a class="btn btn-outline-info" title="Detalhes" href="/clinic/appointments/{{ appointment.id }}/"><i class="fa-solid fa-eye"></i></a>
+              <a class="btn btn-outline-dark" title="Editar" href="/clinic/appointments/edit/{{ appointment.id }}/"><i class="fa-solid fa-pen-to-square"></i></a></td>
         </tr>
         {% endfor %}
     </tbody>

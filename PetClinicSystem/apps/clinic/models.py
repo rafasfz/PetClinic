@@ -19,9 +19,9 @@ class Drug(models.Model):
 
 class Appointment(models.Model):
     date = models.DateField(verbose_name='Data')
-    description = models.TextField(verbose_name='Descrição')
-    diagnosis = models.TextField(verbose_name='Diagnóstico')
-    drugs = models.ManyToManyField(Drug, verbose_name='Remédios')
+    description = models.TextField(verbose_name='Descrição', null=True, blank=True)
+    diagnosis = models.TextField(verbose_name='Diagnóstico', null=True, blank=True)
+    drugs = models.ManyToManyField(Drug, verbose_name='Remédios', null=True, blank=True)
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE, verbose_name='Paciente')
     veterinary = models.ForeignKey(Veterinary, on_delete=models.CASCADE, related_name='appointments', verbose_name='Veterinário')
 
